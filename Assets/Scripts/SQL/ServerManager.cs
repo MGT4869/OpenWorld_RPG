@@ -3,39 +3,110 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
-
+using Random = UnityEngine.Random;
 public class ServerManager : MonoBehaviour
 {
     public GameObject temp,temp2;
+    public MonsterInfo[] MonsterList;
+    public List<DefaultMobClass> MonsterData;
+    public AllMonsterData tempData;
+    public AllMonsterData ClientMonsterData;
     [HideInInspector]public Maria5 maria = new Maria5("220.149.12.209", "OpenWorld_MapData", "nagne", "123");
+    public bool SeverMode;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(Test());
+        if(SeverMode)
+        {
+            SeverDefaultSetting();
+        }
+        else
+        {
+            ClientDefaultSetting();
+        }
     }
-
-    // Update is called once per frame
-    void Update()
+    public void SeverDefaultSetting()
     {
+        MonsterList = Transform.FindObjectsOfType<MonsterInfo>();
+        foreach (MonsterInfo temp in MonsterList)
+        {
+            tempData.data.Add(new DefaultMobClass(temp.gameObject));
+        }
+        string send_json = JsonUtility.ToJson(tempData);
+        maria.create_Table(string.Format("UPDATE {0} SET {1} = {2} WHERE {3} = {4} ", "Map1_Monster_Data", "data", "\'" + send_json + "\'", "Map_Num", "\'" + 1 + "\'"));
 
+        StartCoroutine(ServerPostion_Control());
     }
-
-    public IEnumerator Test()
+    public void ClientDefaultSetting()
+    {
+        DataSet ds_json = maria.SelectUsingAdapter("SELECT * FROM Map1_Monster_Data Where Map_Num = '1'");
+        ClientMonsterData = JsonUtility.FromJson<AllMonsterData>(ds_json.Tables[0].Rows[0]["data"].ToString());
+        for(int i=0;i< ClientMonsterData.data.Count;i++)
+        {
+            GameObject tempObject = Instantiate(temp, temp.transform.position, Quaternion.identity);
+            tempObject.name = ClientMonsterData.data[i].Mob_name;
+            tempObject.transform.position = ClientMonsterData.data[i].MobPostion;
+            tempObject.AddComponent<MonsterControl>();
+        }
+        
+        
+    }
+    public IEnumerator ServerPostion_Control()
     {
         do
         {
-            string send_json = JsonUtility.ToJson(new DefaultMobClass(temp));
-            maria.create_Table(string.Format("UPDATE {0} SET {1} = {2} WHERE {3} = {4} ", "Map1_Monster_Data", "data", "\'" + send_json + "\'", "Mob_ID", "\'" + 1 + "\'"));
-            //maria.create_Table(string.Format("UPDATE {0} SET {1} = {2} WHERE {3} = {4} ", "Map1_Monster_Data", "X", "\'" + temp.transform.position.x + "\'", "Mob_ID", "\'" + 1 + "\'"));
-            //maria.create_Table(string.Format("UPDATE {0} SET {1} = {2} WHERE {3} = {4} ", "Map1_Monster_Data", "Y", "\'" + temp.transform.position.y + "\'", "Mob_ID", "\'" + 1 + "\'"));
-            yield return new WaitForSecondsRealtime(0.001f);
-
-            DataSet ds_json = maria.SelectUsingAdapter(string.Format("SELECT * FROM Map1_Monster_Data WHERE Mob_ID = {0}", "\"" + 1 + "\""));
-            DefaultMobClass tempClass = JsonUtility.FromJson<DefaultMobClass>(ds_json.Tables[0].Rows[0]["data"].ToString());
-            temp2.transform.position = tempClass.MobPostion+ new Vector3(10f,10f,0);
-            //Vector3 tempvector = new Vector3(Convert.ToInt32(ds_json.Tables[0].Rows[0]["X"]), Convert.ToInt32(ds_json.Tables[0].Rows[0]["Y"])+4f,0f);
-            //temp2.transform.position = tempvector;
-            //Debug.Log(ds_json.Tables[0].Rows[0]["data"].ToString());
+            tempData.data.Clear();
+            yield return new WaitForSecondsRealtime(0.4f);
+            foreach (MonsterInfo temp in MonsterList)
+            {
+                tempData.data.Add(new DefaultMobClass(temp.gameObject));
+            }
+            string send_json = JsonUtility.ToJson(tempData);
+            maria.create_Table(string.Format("UPDATE {0} SET {1} = {2} WHERE {3} = {4} ", "Map1_Monster_Data", "data", "\'" + send_json + "\'", "Map_Num", "\'" + 1 + "\'"));
         } while (true);
     }
+
+    public IEnumerator ClientPostion_Control()
+    {
+        do
+        {
+            yield return new WaitForSecondsRealtime(1f);
+            DataSet ds_json = maria.SelectUsingAdapter("SELECT * FROM Map1_Monster_Data Where Map_Num = '1'");
+            ClientMonsterData = JsonUtility.FromJson<AllMonsterData>(ds_json.Tables[0].Rows[0]["data"].ToString());
+            for (int i = 0; i < ClientMonsterData.data.Count; i++)
+            {
+                if(GameObject.Find(ClientMonsterData.data[i].Mob_name) == null)
+                {
+                    GameObject tempObject = Instantiate(temp, temp.transform.position, Quaternion.identity);
+                    tempObject.name = ClientMonsterData.data[i].Mob_name;
+                    tempObject.transform.position = ClientMonsterData.data[i].MobPostion;
+                    tempObject.AddComponent<MonsterControl>();
+                }
+            }
+
+        } while (true);
+    }
+
+    public AllMonsterData return_AllMonsterData()
+    {
+        return ClientMonsterData;
+    }
 }
+
+/*string send_json = JsonUtility.ToJson(new DefaultMobClass(temp.gameObject));
+foreach (DataRow temp_string in ds_json.Tables[0].Rows)
+{
+    if (temp_string["Monster_Name"].ToString() == temp.gameObject.name)
+    {
+        count++;
+        break;
+    }
+}
+if (count == 0)
+{
+    maria.create_Table(string.Format("INSERT INTO {0} (Monster_Name,data) VALUES({1},{2})", "Map1_Monster_Data", "\'" + temp.gameObject.name + "\'", "\'" + send_json + "\'"));
+}
+else
+{
+    maria.create_Table(string.Format("UPDATE {0} SET {1} = {2} WHERE {3} = {4} ", "Map1_Monster_Data", "data", "\'" + send_json + "\'", "Monster_Name", "\'" + temp.gameObject.name + "\'"));
+}*/

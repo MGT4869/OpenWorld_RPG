@@ -56,13 +56,15 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\SQL\help_sql\Create_account.cs" />
-    <Compile Include="Assets\Scripts\SQL\help_sql\Maria5_10.cs" />
     <Compile Include="Assets\Scripts\SQL\help_sql\Save_Notice_Board.cs" />
     <Compile Include="Assets\Scripts\SQL\help_sql\View_notice_board_title.cs" />
-    <Compile Include="Assets\Scripts\SQL\help_sql\Maria5.cs" />
     <Compile Include="Assets\Scripts\SQL\ServerManager.cs" />
+    <Compile Include="Assets\Scripts\SQL\help_sql\Maria5.cs" />
     <Compile Include="Assets\Scripts\SQL\JsonClass.cs" />
+    <Compile Include="Assets\Scripts\SQL\help_sql\Create_account.cs" />
+    <Compile Include="Assets\Scripts\SQL\help_sql\Maria5_10.cs" />
+    <Compile Include="Assets\Scripts\SQL\MonsterInfo.cs" />
+    <Compile Include="Assets\Scripts\SQL\MonsterControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
