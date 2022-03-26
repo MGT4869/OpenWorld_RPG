@@ -247,6 +247,9 @@
  <Reference Include="UnityEditor">
  <HintPath>C:/Program Files/Unity_Projects/2019.4.17f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
  </Reference>
+ <Reference Include="MySql.Data">
+ <HintPath>C:/Users/nagne/Documents/GitHub/OpenWorld_RPG/Assets/Plugins/MySql.Data.dll</HintPath>
+ </Reference>
  <Reference Include="nunit.framework">
  <HintPath>C:/Users/nagne/Documents/GitHub/OpenWorld_RPG/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
  </Reference>

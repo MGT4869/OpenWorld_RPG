@@ -20,7 +20,7 @@ public class MonsterControl : MonoBehaviour
         }
         else
         {
-            StartCoroutine(ClientPostion_Control());
+            //StartCoroutine(ClientPostion_Control());
         }
     }
 

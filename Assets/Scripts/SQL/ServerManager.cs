@@ -3,25 +3,32 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 public class ServerManager : MonoBehaviour
 {
     public GameObject temp,temp2;
     public MonsterInfo[] MonsterList;
     public List<DefaultMobClass> MonsterData;
+    public List<GameObject> Client_MonsterList = new List<GameObject>();
     public AllMonsterData tempData;
     public AllMonsterData ClientMonsterData;
     [HideInInspector]public Maria5 maria = new Maria5("220.149.12.209", "OpenWorld_MapData", "nagne", "123");
     public bool SeverMode;
+    public Text Text_Temp;
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
-        if(SeverMode)
+        Text_Temp.text = "진입";
+        if (SeverMode)
         {
             SeverDefaultSetting();
+            Text_Temp.text = "진입1";
         }
         else
         {
+            Text_Temp.text = "진입2";
+            StartCoroutine(GetAllMonsterData());
             ClientDefaultSetting();
         }
     }
@@ -47,9 +54,11 @@ public class ServerManager : MonoBehaviour
             tempObject.name = ClientMonsterData.data[i].Mob_name;
             tempObject.transform.position = ClientMonsterData.data[i].MobPostion;
             tempObject.AddComponent<MonsterControl>();
+            Client_MonsterList.Add(tempObject);
         }
 
-        StartCoroutine(ClientPostion_Control());
+        StartCoroutine(ClientMonsterUpdate());
+        StartCoroutine(ClientUpdateMonsterPotion());
     }
     public IEnumerator ServerPostion_Control()
     {
@@ -66,13 +75,11 @@ public class ServerManager : MonoBehaviour
         } while (true);
     }
 
-    public IEnumerator ClientPostion_Control()
+    public IEnumerator ClientMonsterUpdate()
     {
         do
         {
             yield return new WaitForSecondsRealtime(1f);
-            DataSet ds_json = maria.SelectUsingAdapter("SELECT * FROM Map1_Monster_Data Where Map_Num = '1'");
-            ClientMonsterData = JsonUtility.FromJson<AllMonsterData>(ds_json.Tables[0].Rows[0]["data"].ToString());
             for (int i = 0; i < ClientMonsterData.data.Count; i++)
             {
                 if(GameObject.Find(ClientMonsterData.data[i].Mob_name) == null)
@@ -86,7 +93,27 @@ public class ServerManager : MonoBehaviour
 
         } while (true);
     }
-
+    public IEnumerator ClientUpdateMonsterPotion()
+    {
+        do
+        {
+            yield return new WaitForSecondsRealtime(0.1f);
+            for (int i = 0; i < ClientMonsterData.data.Count; i++)
+            {
+                Client_MonsterList.Find(x => x.gameObject.name == ClientMonsterData.data[i].Mob_name).transform.position = ClientMonsterData.data[i].MobPostion;
+                Text_Temp.text = ClientMonsterData.data[i].MobPostion.ToString();
+            }
+        } while (true);
+    }
+    public IEnumerator GetAllMonsterData()
+    {
+        do
+        {
+            DataSet ds_json = maria.SelectUsingAdapter("SELECT * FROM Map1_Monster_Data Where Map_Num = '1'");
+            ClientMonsterData = JsonUtility.FromJson<AllMonsterData>(ds_json.Tables[0].Rows[0]["data"].ToString());
+            yield return new WaitForSecondsRealtime(0.1f);
+        } while (true);
+    }
     public AllMonsterData return_AllMonsterData()
     {
         return ClientMonsterData;
