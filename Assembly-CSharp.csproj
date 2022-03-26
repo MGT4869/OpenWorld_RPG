@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CharacterMove.cs" />
+    <Compile Include="Assets\Scripts\MonsterMove.cs" />
     <None Include="Assets\WizardPolyArt\Shader\PolyArtMaskTint.shader" />
     <None Include="Assets\WizardPolyArt\SRP\HowToTestSRPs.txt" />
     <Reference Include="UnityEngine">
