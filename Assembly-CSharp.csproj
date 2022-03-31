@@ -65,6 +65,18 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CharacterMove.cs" />
     <Compile Include="Assets\Scripts\MonsterMove.cs" />
+    <Compile Include="Assets\Scripts\PlayerInfo.cs" />
+    <Compile Include="Assets\Scripts\SQL\Client.cs" />
+    <Compile Include="Assets\Scripts\SQL\JsonClass.cs" />
+    <Compile Include="Assets\Scripts\SQL\MonsterControl.cs" />
+    <Compile Include="Assets\Scripts\SQL\MonsterInfo.cs" />
+    <Compile Include="Assets\Scripts\SQL\Server.cs" />
+    <Compile Include="Assets\Scripts\SQL\ServerManager.cs" />
+    <Compile Include="Assets\Scripts\SQL\help_sql\Create_account.cs" />
+    <Compile Include="Assets\Scripts\SQL\help_sql\Maria5.cs" />
+    <Compile Include="Assets\Scripts\SQL\help_sql\Maria5_10.cs" />
+    <Compile Include="Assets\Scripts\SQL\help_sql\Save_Notice_Board.cs" />
+    <Compile Include="Assets\Scripts\SQL\help_sql\View_notice_board_title.cs" />
     <None Include="Assets\WizardPolyArt\Shader\PolyArtMaskTint.shader" />
     <None Include="Assets\WizardPolyArt\SRP\HowToTestSRPs.txt" />
     <Reference Include="UnityEngine">
@@ -249,6 +261,15 @@
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.17f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N">
+      <HintPath>C:/Users/user/Desktop/UnityProject/OpenWorld_RPG/Assets/Plugins/I18N.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.West">
+      <HintPath>C:/Users/user/Desktop/UnityProject/OpenWorld_RPG/Assets/Plugins/I18N.West.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>C:/Users/user/Desktop/UnityProject/OpenWorld_RPG/Assets/Plugins/MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>C:/Users/user/Desktop/UnityProject/OpenWorld_RPG/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
