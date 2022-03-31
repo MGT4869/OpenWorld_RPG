@@ -12,8 +12,8 @@ public class MonsterControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SM = GameObject.Find("SeverManager").GetComponent<ServerManager>();
-        SeverMode = SM.SeverMode;
+        //SM = GameObject.Find("SeverManager").GetComponent<ServerManager>();
+        //SeverMode = SM.SeverMode;
         if (SeverMode)
         {
             //StartCoroutine(ServerPostion_Control());

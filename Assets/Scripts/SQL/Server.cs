@@ -15,6 +15,8 @@ public class Server : MonoBehaviour
     public AllMonsterData SeverMonsterData;// 서버에 올리는 모든 몬스터 정보를 담아둔 곳
 
     public MonsterInfo[] MonsterList;
+
+    public float updateSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,7 +50,7 @@ public class Server : MonoBehaviour
         do
         {
             //UpLoad
-            yield return new WaitForSecondsRealtime(0.1f);
+            yield return new WaitForSecondsRealtime(updateSpeed);
             //DownLoad
             SeverAllPlayerData.data.Clear();
             DataSet ds_json = maria.SelectUsingAdapter("SELECT * FROM Player_Data");
@@ -65,7 +67,7 @@ public class Server : MonoBehaviour
         do
         {
             SeverMonsterData.data.Clear();
-            yield return new WaitForSecondsRealtime(0.1f);
+            yield return new WaitForSecondsRealtime(updateSpeed);
             foreach (MonsterInfo temp in MonsterList)
             {
                 SeverMonsterData.data.Add(new DefaultMobClass(temp.gameObject));
@@ -93,7 +95,7 @@ public class Server : MonoBehaviour
 
         do
         {
-            yield return new WaitForSecondsRealtime(0.1f);
+            yield return new WaitForSecondsRealtime(updateSpeed);
             for (int i = 0; i < SeverAllPlayerData.data.Count; i++)
             {
                 if (Server_PlayerList.Find(x => x.gameObject.name == SeverAllPlayerData.data[i].Player_name))
