@@ -1681,7 +1681,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7e5356f3b5b4b41b8605fa0c7fbd98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 4063550628683306}
 --- !u!195 &112643979
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3897,7 +3896,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7e5356f3b5b4b41b8605fa0c7fbd98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 4063550628683306}
 --- !u!195 &248078531
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4988,7 +4986,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7e5356f3b5b4b41b8605fa0c7fbd98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 4063550628683306}
 --- !u!195 &325673749
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5757,7 +5754,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7e5356f3b5b4b41b8605fa0c7fbd98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 4063550628683306}
 --- !u!195 &363824246
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -7341,7 +7337,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7e5356f3b5b4b41b8605fa0c7fbd98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 4063550628683306}
 --- !u!195 &496318165
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -8039,7 +8034,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7e5356f3b5b4b41b8605fa0c7fbd98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 4063550628683306}
 --- !u!195 &538864346
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -8314,7 +8308,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7e5356f3b5b4b41b8605fa0c7fbd98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 4063550628683306}
 --- !u!195 &559555779
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -8839,7 +8832,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7e5356f3b5b4b41b8605fa0c7fbd98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 4063550628683306}
 --- !u!195 &595565653
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -9733,7 +9725,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7e5356f3b5b4b41b8605fa0c7fbd98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 4063550628683306}
 --- !u!195 &647244178
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -15379,7 +15370,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7e5356f3b5b4b41b8605fa0c7fbd98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 4063550628683306}
 --- !u!195 &1017257798
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -18441,7 +18431,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7e5356f3b5b4b41b8605fa0c7fbd98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 4063550628683306}
 --- !u!195 &1236488354
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -19186,7 +19175,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7e5356f3b5b4b41b8605fa0c7fbd98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 4063550628683306}
 --- !u!195 &1279088948
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -19982,7 +19970,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7e5356f3b5b4b41b8605fa0c7fbd98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 4063550628683306}
 --- !u!195 &1340016167
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -21836,7 +21823,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7e5356f3b5b4b41b8605fa0c7fbd98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 4063550628683306}
 --- !u!195 &1439230270
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -23082,25 +23068,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Polygonal Metalon Red
       objectReference: {fileID: 0}
-    - target: {fileID: 1128758269040250, guid: f88c6ad57910d8648807bcf0c131f49d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4444695180855720, guid: f88c6ad57910d8648807bcf0c131f49d, type: 3}
       propertyPath: m_RootOrder
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444695180855720, guid: f88c6ad57910d8648807bcf0c131f49d, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444695180855720, guid: f88c6ad57910d8648807bcf0c131f49d, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444695180855720, guid: f88c6ad57910d8648807bcf0c131f49d, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4444695180855720, guid: f88c6ad57910d8648807bcf0c131f49d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23315,7 +23285,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7e5356f3b5b4b41b8605fa0c7fbd98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 4063550628683306}
 --- !u!195 &1544817373
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -25035,7 +25004,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7e5356f3b5b4b41b8605fa0c7fbd98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 4063550628683306}
 --- !u!195 &1669251250
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -26337,7 +26305,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7e5356f3b5b4b41b8605fa0c7fbd98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 4063550628683306}
 --- !u!195 &1763331284
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -26577,7 +26544,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7e5356f3b5b4b41b8605fa0c7fbd98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 4063550628683306}
 --- !u!54 &1776035191
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -29313,7 +29279,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7e5356f3b5b4b41b8605fa0c7fbd98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 4063550628683306}
 --- !u!195 &1996966117
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -31860,7 +31825,7 @@ GameObject:
   - component: {fileID: 60}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
