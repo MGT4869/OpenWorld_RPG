@@ -2289,6 +2289,7 @@ GameObject:
   - component: {fileID: 136275810615880682}
   - component: {fileID: 1619548511}
   - component: {fileID: 1619548512}
+  - component: {fileID: 6757399691308860286}
   m_Layer: 0
   m_Name: PolyArtWizardMaskTintMat
   m_TagString: Untagged
@@ -2377,6 +2378,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charact: {fileID: 4063552230360950}
   speed: 5
+--- !u!114 &6757399691308860286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953271650171834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebd201a9281910445980fc5d2303d117, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hp: 50
 --- !u!1 &1956949540428108
 GameObject:
   m_ObjectHideFlags: 0

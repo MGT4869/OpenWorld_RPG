@@ -35,6 +35,10 @@ public class Client : MonoBehaviour
         if (ds_json.Tables[0].Rows.Count == 0)
         {
             maria.create_Table(string.Format("INSERT INTO Player_Data(Player_ID) VALUES({0})", "\'" + SystemInfo.deviceUniqueIdentifier + "\'"));
+            string send_json = JsonUtility.ToJson(new PlayerClass(PlayerPrefab));
+            Debug.Log(send_json);
+            maria.create_Table(string.Format("UPDATE Player_Data SET data = \'{0}\' WHERE Player_ID = \'{1}\'", send_json, SystemInfo.deviceUniqueIdentifier));
+
             DataSet ds_json_intfor = maria.SelectUsingAdapter("SELECT * FROM Player_Data Where Player_ID = '" + SystemInfo.deviceUniqueIdentifier + "\'");
             PlayerCharctor = Instantiate(PlayerPrefab, PlayerPrefab.transform.position, Quaternion.identity);
             PlayerCharctor.AddComponent<PlayerInfo>();
