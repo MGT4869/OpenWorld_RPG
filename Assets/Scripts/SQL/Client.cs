@@ -9,9 +9,9 @@ public class Client : MonoBehaviour
     public GameObject PlayerPrefab;// 이계정에 접속한 플레이어를 나타내는 게임오브젝트 프리팹
     public GameObject MonsterPrefab; // 몬스터 프리팹
 
-    public AllMonsterData ClientMonsterData; // 모든 몬스터 정보를 담아둔 클래스
-
     public List<GameObject> Client_MonsterList = new List<GameObject>();// 모든 인게임존재하는 몬스터를 담아둔 클래스
+
+    private DataSet MonsterDataList;// 모든 인게임존재하는 몬스터를 담아둔 클래스
 
     public float updateSpeed;
 
@@ -62,8 +62,7 @@ public class Client : MonoBehaviour
         do
         {
             //DownLoad
-            DataSet ds_json = maria.SelectUsingAdapter("SELECT * FROM Map1_Monster_Data Where Map_Num = '1'");
-            ClientMonsterData = JsonUtility.FromJson<AllMonsterData>(ds_json.Tables[0].Rows[0]["data"].ToString());
+            MonsterDataList = maria.SelectUsingAdapter("SELECT * FROM Map1_Monster_State");
             yield return new WaitForSecondsRealtime(updateSpeed);
 
             //Upload
@@ -75,14 +74,14 @@ public class Client : MonoBehaviour
 
     public void ClientDefaultSetting()
     {
-        DataSet ds_json = maria.SelectUsingAdapter("SELECT * FROM Map1_Monster_Data Where Map_Num = '1'");
-        ClientMonsterData = JsonUtility.FromJson<AllMonsterData>(ds_json.Tables[0].Rows[0]["data"].ToString());
-        for (int i = 0; i < ClientMonsterData.data.Count; i++)
+        DataSet ds_json = maria.SelectUsingAdapter("SELECT * FROM Map1_Monster_State");
+        //ClientMonsterData = JsonUtility.FromJson<AllMonsterData>(ds_json.Tables[0].Rows[0]["data"].ToString());
+        for (int i = 0; i < ds_json.Tables[0].Rows.Count; i++)
         {
-            GameObject tempObject = Instantiate(MonsterPrefab, MonsterPrefab.transform.position, Quaternion.identity);
-            tempObject.name = ClientMonsterData.data[i].Mob_name;
-            tempObject.transform.position = ClientMonsterData.data[i].MobPostion;
-            tempObject.AddComponent<MonsterControl>();
+            //Vector3 tempvector3 = new Vector3(ds_json.Tables[0].Rows[i]["Pos"].ToString());
+            JsonVector3 tempVector3 = JsonUtility.FromJson<JsonVector3>(ds_json.Tables[0].Rows[i]["Pos"].ToString());
+            GameObject tempObject = Instantiate(MonsterPrefab, tempVector3.Pos, Quaternion.identity);
+            tempObject.name = ds_json.Tables[0].Rows[i]["MonsterName"].ToString();
             Client_MonsterList.Add(tempObject);
         }
 
@@ -95,14 +94,13 @@ public class Client : MonoBehaviour
         do
         {
             yield return new WaitForSecondsRealtime(updateSpeed);
-            for (int i = 0; i < ClientMonsterData.data.Count; i++)
+            for (int i = 0; i < MonsterDataList.Tables[0].Rows.Count; i++)
             {
-                if (Client_MonsterList.Find(x => x.gameObject.name == ClientMonsterData.data[i].Mob_name) == null)
+                if (Client_MonsterList.Find(x => x.gameObject.name == MonsterDataList.Tables[0].Rows[i]["MonsterName"].ToString()) == null)
                 {
-                    GameObject tempObject = Instantiate(MonsterPrefab, MonsterPrefab.transform.position, Quaternion.identity);
-                    tempObject.name = ClientMonsterData.data[i].Mob_name;
-                    tempObject.transform.position = ClientMonsterData.data[i].MobPostion;
-                    tempObject.AddComponent<MonsterControl>();
+                    JsonVector3 tempVector3 = JsonUtility.FromJson<JsonVector3>(MonsterDataList.Tables[0].Rows[i]["Pos"].ToString());
+                    GameObject tempObject = Instantiate(MonsterPrefab, tempVector3.Pos, Quaternion.identity);
+                    tempObject.name = MonsterDataList.Tables[0].Rows[i]["MonsterName"].ToString();
                     Client_MonsterList.Add(tempObject);
                 }
             }
@@ -114,9 +112,9 @@ public class Client : MonoBehaviour
         do
         {
             yield return new WaitForSecondsRealtime(updateSpeed);
-            for (int i = 0; i < ClientMonsterData.data.Count; i++)
+            for (int i = 0; i < MonsterDataList.Tables[0].Rows.Count; i++)
             {
-                Client_MonsterList.Find(x => x.gameObject.name == ClientMonsterData.data[i].Mob_name).transform.position = ClientMonsterData.data[i].MobPostion;
+                Client_MonsterList.Find(x => x.gameObject.name == MonsterDataList.Tables[0].Rows[i]["MonsterName"].ToString()).transform.position = JsonUtility.FromJson<JsonVector3>(MonsterDataList.Tables[0].Rows[i]["Pos"].ToString()).Pos;
             }
         } while (true);
     }

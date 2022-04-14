@@ -53,3 +53,12 @@ public class AllPlayerData
         data = this.data;
     }
 }
+public class JsonVector3
+{
+    public Vector3 Pos;
+
+    public JsonVector3(GameObject temp)
+    {
+        Pos = temp.transform.position;
+    }
+}
