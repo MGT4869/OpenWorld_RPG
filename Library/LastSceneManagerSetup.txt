@@ -1,9 +1,5 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/Monster_Animator_Test.unity
-=======
 - path: Assets/Scenes/DB_ClientTest.unity
->>>>>>> 2064e8869bfa194779b9a44f0823b7a9dda3a191
   isLoaded: 1
   isActive: 1
   isSubScene: 0
