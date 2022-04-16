@@ -63,6 +63,9 @@ public class Client : MonoBehaviour
             PlayerClass tempclass = JsonUtility.FromJson<PlayerClass>(data["data"].ToString());
             GameObject tempobj = Instantiate(PlayerPrefab, tempclass.PlayerPos, Quaternion.identity);
             tempobj.name = data["Player_ID"].ToString();
+            Destroy(tempobj.GetComponent<CharacterMove>());
+            Destroy(tempobj.GetComponent<CharacterAni_State>());
+            Destroy(tempobj.GetComponent<PlayerInfo>());
             SeverPlayers.Add(tempobj);
         }
         

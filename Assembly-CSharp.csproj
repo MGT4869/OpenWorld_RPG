@@ -70,7 +70,6 @@
      <Compile Include="Assets\Scripts\SQL\help_sql\Maria5_10.cs" />
      <Compile Include="Assets\Scripts\SQL\help_sql\Save_Notice_Board.cs" />
      <Compile Include="Assets\Scripts\SQL\help_sql\View_notice_board_title.cs" />
-     <Compile Include="Assets\Scripts\Test.cs" />
      <None Include="Assets\WizardPolyArt\Shader\PolyArtMaskTint.shader" />
      <None Include="Assets\WizardPolyArt\SRP\HowToTestSRPs.txt" />
  <Reference Include="UnityEngine">
