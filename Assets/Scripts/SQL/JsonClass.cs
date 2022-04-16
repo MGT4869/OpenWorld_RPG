@@ -37,12 +37,14 @@ public class PlayerClass
     public int Hp;
     public Vector3 PlayerPos;
     public string AniState;
+    public string AniRun;
     public PlayerClass(GameObject Charctor_Object)
     {
         Player_name = Charctor_Object.gameObject.name;
         PlayerPos = Charctor_Object.transform.position;
         Hp = Charctor_Object.GetComponent<PlayerInfo>().Hp;
         AniState = Charctor_Object.GetComponent<PlayerInfo>().AniState;
+        AniRun = Charctor_Object.GetComponent<PlayerInfo>().AniRun;
     }
 }
 [Serializable]

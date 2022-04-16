@@ -51,7 +51,6 @@ public class CharacterAni_State : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             playInfo.AniState = "1";
-
             animator.SetBool("Run", true);
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
@@ -60,7 +59,7 @@ public class CharacterAni_State : MonoBehaviour
 
             animator.SetBool("Run", false);
         }
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.UpArrow) &&!Input.GetKey(KeyCode.LeftShift))//|| Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
         {
             playInfo.AniState = "2";
 

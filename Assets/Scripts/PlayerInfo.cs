@@ -6,6 +6,7 @@ public class PlayerInfo : MonoBehaviour
 {
     public int Hp;
     public string AniState;
+    public string AniRun;
     // Start is called before the first frame update
     void Start()
     {

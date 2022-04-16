@@ -9,6 +9,7 @@ public class Sever_Ani_State : MonoBehaviour
     DataSet severPlayerDataset;
 
     string Anistate;
+    string AniRun;
     [HideInInspector] public Maria5 maria = new Maria5("220.149.12.209", "OpenWorld_MapData", "nagne", "123");
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,7 @@ public class Sever_Ani_State : MonoBehaviour
         {
             severPlayerDataset = maria.SelectUsingAdapter("SELECT * FROM Player_Data Where Player_ID = '" + "288e8376f4309c2d61d7324709b7139597c2db15" + "\'");
             Anistate = JsonUtility.FromJson<PlayerClass>(severPlayerDataset.Tables[0].Rows[0]["data"].ToString()).AniState;
+            AniRun = JsonUtility.FromJson<PlayerClass>(severPlayerDataset.Tables[0].Rows[0]["data"].ToString()).AniRun;
             Debug.Log(Anistate);
             yield return new WaitForSecondsRealtime(0.01f);
         } while(true);
