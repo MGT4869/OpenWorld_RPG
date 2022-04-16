@@ -21,6 +21,23 @@ public class CharacterAni_State : MonoBehaviour
         Attack_Ani();
         Drink();
         StartCoroutine(Skill());
+
+        if (Ani_Name("Run"))
+        {
+            playInfo.AniState = "1";
+        }
+        else if (Ani_Name("WalkForward"))
+        {
+            playInfo.AniState = "2";
+        }
+        else if (Ani_Name("Jump"))
+        {
+            playInfo.AniState = "3";
+        }
+        else
+        {
+            playInfo.AniState = "0";
+        }
     }
     public bool Ani_Name(string name)
     {
@@ -50,35 +67,28 @@ public class CharacterAni_State : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            playInfo.AniState = "1";
             animator.SetBool("Run", true);
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            playInfo.AniState = "!1";
             animator.SetBool("Run", false);
         }
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
         {
-            playInfo.AniState = "2";
             animator.SetBool("Walk", true);
         }
         else if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
         {
-            playInfo.AniState = "!1";
-            playInfo.AniState = "!2";
             animator.SetBool("Walk", false);
             animator.SetBool("Run", false);
         }
 
         if (Input.GetKeyDown(KeyCode.LeftAlt))
         {
-            playInfo.AniState = "3";
             animator.SetBool("Jump", true);
         }
         else if (Input.GetKeyUp(KeyCode.LeftAlt))
         {
-            playInfo.AniState = "!3";
             animator.SetBool("Jump", false);
         }
     }

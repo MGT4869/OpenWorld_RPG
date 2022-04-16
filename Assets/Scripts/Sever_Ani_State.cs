@@ -26,7 +26,7 @@ public class Sever_Ani_State : MonoBehaviour
     {
         do
         {
-            severPlayerDataset = maria.SelectUsingAdapter("SELECT * FROM Player_Data Where Player_ID = '" + "AniTest" + "\'");
+            severPlayerDataset = maria.SelectUsingAdapter("SELECT * FROM Player_Data Where Player_ID = '" + "288e8376f4309c2d61d7324709b7139597c2db15" + "\'");
             Anistate = JsonUtility.FromJson<PlayerClass>(severPlayerDataset.Tables[0].Rows[0]["data"].ToString()).AniState;
             Debug.Log(Anistate);
             yield return new WaitForSecondsRealtime(0.01f);
@@ -35,6 +35,11 @@ public class Sever_Ani_State : MonoBehaviour
 
     public void Move()
     {
+        if (Anistate == "0")
+        {
+            animator.Play("Idle");
+        }
+
         if (Anistate == "1")
         {
             animator.SetBool("Run", true);
@@ -43,6 +48,7 @@ public class Sever_Ani_State : MonoBehaviour
         {
             animator.SetBool("Run", false);
         }
+        
         if (Anistate == "2")
         {
             animator.SetBool("Walk", true);
