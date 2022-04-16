@@ -37,11 +37,11 @@ public class Sever_Ani_State : MonoBehaviour
 
     public void Move()
     {
-        if (Anistate == "1")
+        if (AniRun == "1")
         {
             animator.SetBool("Run", true);
         }
-        else if (Anistate == "!1")
+        else if (AniRun == "!1")
         {
             animator.SetBool("Run", false);
         }
