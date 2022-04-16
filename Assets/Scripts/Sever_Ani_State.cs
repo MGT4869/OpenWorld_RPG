@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Sever_Ani_State : MonoBehaviour
 {
+    Animator animator;
     DataSet severPlayerDataset;
 
     string Anistate;
@@ -12,13 +13,14 @@ public class Sever_Ani_State : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         StartCoroutine(TestAni());
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Move();
     }
     public IEnumerator TestAni()
     {
@@ -29,5 +31,35 @@ public class Sever_Ani_State : MonoBehaviour
             Debug.Log(Anistate);
             yield return new WaitForSecondsRealtime(0.01f);
         } while(true);
+    }
+
+    public void Move()
+    {
+        if (Anistate == "1")
+        {
+            animator.SetBool("Run", true);
+        }
+        else if (Anistate == "!1")
+        {
+            animator.SetBool("Run", false);
+        }
+        if (Anistate == "2")
+        {
+            animator.SetBool("Walk", true);
+        }
+        else if (Anistate == "!2")
+        {
+            animator.SetBool("Walk", false);
+            animator.SetBool("Run", false);
+        }
+
+        if (Anistate == "3")
+        {
+            animator.SetBool("Jump", true);
+        }
+        else if (Anistate == "!3")
+        {
+            animator.SetBool("Jump", false);
+        }
     }
 }
