@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CharacterAni_State : MonoBehaviour
 {
+    public Coroutine atkOne;
     private Animator animator;
 
-    float timer;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -15,7 +16,7 @@ public class CharacterAni_State : MonoBehaviour
     void Update()
     {
         Move();
-        Attack();
+        Attack_Ani();
         Drink();
         StartCoroutine(Skill());
     }
@@ -29,6 +30,18 @@ public class CharacterAni_State : MonoBehaviour
         {
             return false;
         }
+    }
+
+    private GameObject FindNearstObjectByTag(string tag)
+    {
+        var _obj = GameObject.FindGameObjectsWithTag(tag).ToList();
+
+        var neareastObject = _obj.OrderBy(obj =>
+        {
+            return Vector3.Distance(transform.position, obj.transform.position);
+        }).FirstOrDefault();
+
+        return neareastObject;
     }
 
     public void Move()
@@ -61,18 +74,47 @@ public class CharacterAni_State : MonoBehaviour
         }
     }
 
-    public void Attack()
+    public void Attack_Ani()
     {
         if (Input.GetKeyDown(KeyCode.LeftControl)
-            && !Ani_Name("Attack02") && !Ani_Name("Skill") && !Ani_Name("Skill_Main"))
+            && !Ani_Name("Attack02") && !Ani_Name("Skill") && !Ani_Name("Skill_Main") && !Ani_Name("PotionDrink"))
         {
+            if (atkOne == null)
+            {
+                atkOne = StartCoroutine(Attack());
+            }
+
             animator.Play("Attack01");
-            if ((Ani_Name("Attack01") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.7f
+            if ((Ani_Name("Attack01") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.75f
                 && Input.GetKeyDown(KeyCode.LeftControl)))
             {
+                StartCoroutine(Attack());
                 animator.Play("Attack02");
             }
         }
+    }
+    IEnumerator Attack()
+    {
+        do {
+            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.6f && !Ani_Name("Idle"))
+            {
+                if (Vector3.Distance(transform.position, FindNearstObjectByTag("Enemy").transform.position) <= 3f)
+                {
+                    Debug.Log(FindNearstObjectByTag("Enemy"));
+                }
+                break;
+            }
+            
+            yield return new WaitForEndOfFrame();
+        } while (true);
+        
+        do
+        {
+            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f || Ani_Name("Attack02") || Ani_Name("Idle"))
+                break;
+            yield return new WaitForEndOfFrame();
+        } while (true);
+        atkOne = null;
     }
 
     public void Drink()

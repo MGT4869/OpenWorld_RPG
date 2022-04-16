@@ -18,35 +18,35 @@ public class CharacterMove : MonoBehaviour
     {
         do
         {
-            if (Input.GetKey("w"))
+            if (Input.GetKey(KeyCode.UpArrow))
             {
                 cc.SimpleMove(charact.forward * speed);
-                if (Input.GetKey("d"))
+                if (Input.GetKey(KeyCode.RightArrow))
                 {
                     cc.SimpleMove(charact.right * speed);
                 }
-                else if (Input.GetKey("a"))
+                else if (Input.GetKey(KeyCode.LeftArrow))
                 {
                     cc.SimpleMove(charact.right * -speed);
                 }
             }
-            else if (Input.GetKey("s"))
+            else if (Input.GetKey(KeyCode.DownArrow))
             {
                 cc.SimpleMove(charact.forward * -speed);
-                if (Input.GetKey("d"))
+                if (Input.GetKey(KeyCode.RightArrow))
                 {
                     cc.SimpleMove(charact.right * speed);
                 }
-                else if (Input.GetKey("a"))
+                else if (Input.GetKey(KeyCode.LeftArrow))
                 {
                     cc.SimpleMove(charact.right * -speed);
                 }
             }
-            else if (Input.GetKey("d"))
+            else if (Input.GetKey(KeyCode.RightArrow))
             {
                 cc.SimpleMove(charact.right * speed);
             }
-            else if (Input.GetKey("a"))
+            else if (Input.GetKey(KeyCode.LeftArrow))
             {
                 cc.SimpleMove(charact.right * -speed);
             }
