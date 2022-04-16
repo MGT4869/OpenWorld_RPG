@@ -38,6 +38,10 @@ public class Sever_Ani_State : MonoBehaviour
         if (Anistate == "0")
         {
             animator.Play("Idle");
+
+            animator.SetBool("Run", false);
+            animator.SetBool("Walk", false);
+            animator.SetBool("Jump", false);
         }
 
         if (Anistate == "1")
