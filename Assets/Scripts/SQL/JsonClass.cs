@@ -36,11 +36,13 @@ public class PlayerClass
     public string Player_name;
     public int Hp;
     public Vector3 PlayerPos;
+    public string AniState;
     public PlayerClass(GameObject Charctor_Object)
     {
         Player_name = Charctor_Object.gameObject.name;
         PlayerPos = Charctor_Object.transform.position;
         Hp = Charctor_Object.GetComponent<PlayerInfo>().Hp;
+        AniState = Charctor_Object.GetComponent<PlayerInfo>().AniState;
     }
 }
 [Serializable]
@@ -53,6 +55,7 @@ public class AllPlayerData
         data = this.data;
     }
 }
+[Serializable]
 public class JsonVector3
 {
     public Vector3 Pos;

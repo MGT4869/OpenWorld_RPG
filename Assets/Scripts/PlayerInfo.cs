@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerInfo : MonoBehaviour
 {
     public int Hp;
+    public string AniState;
     // Start is called before the first frame update
     void Start()
     {
