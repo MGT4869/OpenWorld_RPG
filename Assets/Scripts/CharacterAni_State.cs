@@ -16,6 +16,7 @@ public class CharacterAni_State : MonoBehaviour
     {
         Move();
         Attack();
+        Drink();
         StartCoroutine(Skill());
     }
     public bool Ani_Name(string name)
@@ -74,10 +75,19 @@ public class CharacterAni_State : MonoBehaviour
         }
     }
 
+    public void Drink()
+    {
+        if (Input.GetKeyDown("1") && Ani_Name("Idle") || Input.GetKeyDown("1") && Ani_Name("WalkForward")
+            || Input.GetKeyDown("1") && Ani_Name("Run"))
+        {
+            animator.Play("PotionDrink");
+        }
+    }
+
     IEnumerator Skill()
     {
-        if (Input.GetKey("q") && Ani_Name("Idle") || Input.GetKeyDown("q") && Ani_Name("WalkForward")
-            || Input.GetKeyDown("q") && Ani_Name("Run"))
+        if (Input.GetKey("q") && Ani_Name("Idle") || Input.GetKey("q") && Ani_Name("WalkForward")
+            || Input.GetKey("q") && Ani_Name("Run"))
         {
             animator.Play("Skill");
             yield return new WaitForSecondsRealtime(3f);
@@ -91,8 +101,8 @@ public class CharacterAni_State : MonoBehaviour
             animator.Play("Idle");
         }
 
-        if (Input.GetKey("w") && Ani_Name("Idle") || Input.GetKeyDown("w") && Ani_Name("WalkForward")
-            || Input.GetKeyDown("w") && Ani_Name("Run"))
+        if (Input.GetKey("w") && Ani_Name("Idle") || Input.GetKey("w") && Ani_Name("WalkForward")
+            || Input.GetKey("w") && Ani_Name("Run"))
         {
             animator.Play("Skill02");
             yield return new WaitForSecondsRealtime(6f);
