@@ -57,6 +57,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CharacterAni_State.cs" />
      <Compile Include="Assets\Scripts\CharacterMove.cs" />
+     <Compile Include="Assets\Scripts\Character_State.cs" />
      <Compile Include="Assets\Scripts\MonsterMove.cs" />
      <Compile Include="Assets\Scripts\PlayerInfo.cs" />
      <Compile Include="Assets\Scripts\SQL\Client.cs" />
@@ -70,6 +71,7 @@
      <Compile Include="Assets\Scripts\SQL\help_sql\Maria5_10.cs" />
      <Compile Include="Assets\Scripts\SQL\help_sql\Save_Notice_Board.cs" />
      <Compile Include="Assets\Scripts\SQL\help_sql\View_notice_board_title.cs" />
+     <Compile Include="Assets\Scripts\Sever_Ani_State.cs" />
      <None Include="Assets\WizardPolyArt\Shader\PolyArtMaskTint.shader" />
      <None Include="Assets\WizardPolyArt\SRP\HowToTestSRPs.txt" />
  <Reference Include="UnityEngine">
